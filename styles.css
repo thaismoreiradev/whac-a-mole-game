@@ -1,0 +1,19 @@
+.grid{
+    width: 606px;
+    height: 606px;
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square{
+    width: 200px;
+    height: 200px;
+    background-color: blueviolet;
+    border: solid white 1px;
+    
+}
+
+.mole{
+    background-color: coral;
+}
