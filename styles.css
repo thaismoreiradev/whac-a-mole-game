@@ -1,3 +1,11 @@
+.modal{
+    display: none;
+    height: 200px;
+    width: 200px;
+    background-color: green;
+}
+
+
 .grid{
     width: 606px;
     height: 606px;

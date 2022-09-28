@@ -3,7 +3,11 @@ const squares = document.querySelectorAll(".square")
 const mole = document.querySelector(".mole")
 const timeLeft = document.querySelector("#time-left")
 const score = document.querySelector("#score")
-const level = document.querySelector("#level")
+let level = document.querySelector("#level")
+const modal = document.querySelector("#modal")
+const levelTwoString = "Level 2"
+const levelThreeString = "Level 3"
+const levelWinner = "YOU WIN!"
 
 //create variables
 let result = null
@@ -28,6 +32,13 @@ const moveMole = (time) => {
     timerId = setInterval(randomSquare, Number(time));
 }
 
+
+
+
+
+
+
+
 const countDown = () => {
     currentTime--
     timeLeft.textContent = currentTime  
@@ -35,9 +46,102 @@ const countDown = () => {
     if(currentTime == 0) {
         clearInterval(countDownTimerId)
         clearInterval(timerId)
-        rules()
+        if(result >= 1 && level.textContent == "Level 1"){
+            levelTwo()
+        }
+        else if (result >= 2 && level.textContent == levelTwoString){
+            levelThree()
+        }
+        else if(result >= 3 && level.textContent == levelThreeString){
+            finishGame()
+        }else {
+            // alert("GAME OVER")
+            modalConfig ("red", "GAME OVER BITCH")
+        }
+        
     }
 }
+
+
+
+
+const modalConfig = (background, string) => {
+    modal.style.display = "block"
+    modal.style.backgroundColor = background
+    modal.textContent = string
+    setTimeout(() => {
+        modal.style.display = "none"
+    }, 5000);
+}
+
+
+
+
+
+const levelTwo = () => {
+
+
+    modalConfig ("pink", "Starting level 2")
+
+      setTimeout(() => {
+
+        result = 0
+        score.textContent = result
+        level.textContent = levelTwoString
+        moveMole(600)
+        currentTime = 10
+        countDownTimerId = setInterval(countDown, 1000)
+
+
+    }, 5000)
+
+    
+}
+
+
+
+const levelThree = () => {
+
+        // alert("starting level 3")
+        modalConfig ("blue", "Starting level 3")
+
+     setTimeout(() => {
+
+        result = 0
+        score.textContent = result
+        level.textContent = levelThreeString
+        moveMole(400)
+        currentTime = 10
+        countDownTimerId = setInterval(countDown, 1000)
+
+
+        
+    }, 5000)
+   
+}
+
+
+
+
+const finishGame = () => {
+
+        modalConfig ("GREEN", "YOU WIN!")
+
+    setTimeout(() => {
+
+        result = 0
+        score.textContent = result
+        level.textContent = levelWinner
+        moveMole(1000)
+        currentTime = 10
+        countDownTimerId = setInterval(countDown, 1000)
+
+        }, 5000)
+  
+}
+
+
+
 
 
 squares.forEach(square => {
@@ -53,55 +157,5 @@ squares.forEach(square => {
 
 
 
-
 moveMole(1000)
-
 countDownTimerId = setInterval(countDown, 1000)
-
-
-
-const rules = () => {     
-
-            if(result >= 3 ){
-                alert("congrats")
-                // here begins level 2
-                result = 0
-                score.textContent = result
-                level.textContent = "Level 2"
-                moveMole(600)
-                currentTime = 10
-                countDownTimerId = setInterval(countDown, 1000)
-                
-                    
-                    if(result >= 3){
-                        alert("starting level 3")
-                        result = 0
-                        score.textContent = result
-                        level.textContent = "Level 3"
-                        moveMole(400)
-                        currentTime = 10
-                        countDownTimerId = setInterval(countDown, 1000)
-
-                    }
-
-
-            }
-            else{
-                alert("GAME OVER, try faster next time")
-            }
-
-        
-    }
-    // if (currentTime ){
-    //     level.textContent = "Level 2"
-    //     clearInterval(countDownTimerId)
-    //     clearInterval(timerId)
-    //     alert("Congrats, play the next level")
-
-
-
-    // }
-
-
-
-
