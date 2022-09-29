@@ -5,6 +5,12 @@
     background-color: green;
 }
 
+button{
+    display: none;
+    height: 100px;
+    width: 100px;
+}
+
 
 .grid{
     width: 606px;

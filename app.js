@@ -5,6 +5,7 @@ const timeLeft = document.querySelector("#time-left")
 const score = document.querySelector("#score")
 let level = document.querySelector("#level")
 const modal = document.querySelector("#modal")
+const buttonPlayAgain = document.querySelector("#play-again")
 const levelTwoString = "Level 2"
 const levelThreeString = "Level 3"
 const levelWinner = "YOU WIN!"
@@ -47,16 +48,16 @@ const countDown = () => {
         clearInterval(countDownTimerId)
         clearInterval(timerId)
         if(result >= 1 && level.textContent == "Level 1"){
-            levelTwo()
+            startingLevelTwo()
         }
         else if (result >= 2 && level.textContent == levelTwoString){
-            levelThree()
+            startingLevelThree()
         }
         else if(result >= 3 && level.textContent == levelThreeString){
-            finishGame()
+            winningTheGame()
         }else {
-            // alert("GAME OVER")
-            modalConfig ("red", "GAME OVER BITCH")
+            messageEnding("red", "GAME OVER BITCH")
+            restartingGame("Try again")
         }
         
     }
@@ -65,7 +66,14 @@ const countDown = () => {
 
 
 
-const modalConfig = (background, string) => {
+const messageEnding = (background, string) => {
+    modal.style.display = "block"
+    modal.style.backgroundColor = background
+    modal.textContent = string
+}
+
+
+const configuratingModal = (background, string) => {
     modal.style.display = "block"
     modal.style.backgroundColor = background
     modal.textContent = string
@@ -74,25 +82,35 @@ const modalConfig = (background, string) => {
     }, 5000);
 }
 
+const restartingGame = (string) => {
+    buttonPlayAgain.style.display = "block"
+    buttonPlayAgain.textContent = string
+    buttonPlayAgain.addEventListener("click", () => location.reload())
+}
 
 
 
 
-const levelTwo = () => {
 
 
-    modalConfig ("pink", "Starting level 2")
+const changingLevel = () => {
+    result = 0
+    score.textContent = result    
+    currentTime = 11
+    countDownTimerId = setInterval(countDown, 1000)
+}
 
-      setTimeout(() => {
 
-        result = 0
-        score.textContent = result
+
+const startingLevelTwo = () => {
+
+
+    configuratingModal ("pink", "Starting level 2")
+
+      setTimeout(() => {        
         level.textContent = levelTwoString
+        changingLevel()        
         moveMole(600)
-        currentTime = 10
-        countDownTimerId = setInterval(countDown, 1000)
-
-
     }, 5000)
 
     
@@ -100,22 +118,14 @@ const levelTwo = () => {
 
 
 
-const levelThree = () => {
+const startingLevelThree = () => {
 
-        // alert("starting level 3")
-        modalConfig ("blue", "Starting level 3")
+    configuratingModal ("blue", "Starting level 3")
 
-     setTimeout(() => {
-
-        result = 0
-        score.textContent = result
+    setTimeout(() => {
         level.textContent = levelThreeString
         moveMole(400)
-        currentTime = 10
-        countDownTimerId = setInterval(countDown, 1000)
-
-
-        
+        changingLevel()        
     }, 5000)
    
 }
@@ -123,22 +133,12 @@ const levelThree = () => {
 
 
 
-const finishGame = () => {
+const winningTheGame = () => {
 
-        modalConfig ("GREEN", "YOU WIN!")
-
-    setTimeout(() => {
-
-        result = 0
-        score.textContent = result
-        level.textContent = levelWinner
-        moveMole(1000)
-        currentTime = 10
-        countDownTimerId = setInterval(countDown, 1000)
-
-        }, 5000)
-  
+        messageEnding("GREEN", "YOU WIN!")
+        restartingGame("Play again")  
 }
+
 
 
 
