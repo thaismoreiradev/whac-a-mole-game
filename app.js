@@ -57,7 +57,7 @@ const countDown = () => {
             winningTheGame()
         }else {
             messageEnding("red", "GAME OVER BITCH")
-            restartingGame("Try again")
+            restartingGame("TRY AGAIN")
         }
         
     }
@@ -136,7 +136,7 @@ const startingLevelThree = () => {
 const winningTheGame = () => {
 
         messageEnding("GREEN", "YOU WIN!")
-        restartingGame("Play again")  
+        restartingGame("PLAY AGAIN")  
 }
 
 

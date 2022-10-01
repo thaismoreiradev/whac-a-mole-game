@@ -10,24 +10,27 @@
 <body>
     <div class="game-container">
         <header>
-            <h1>WHACK-A-MOLE</h1>
+            <img src="./images/whac-a-mole-title.png" alt="Whac-A-Mole" class="title">
         </header>
         <div class="infos">
-            <div class="block-left">
-                <h2 id="level">Level 1</h2>
+            <div class="block-level">
+                <h3 id="level">Level 1</h3>
+            </div>
+            <div class="block-score">
                 <h3>Score: <span id="score">0</span></h3>
-                </div>
+            </div>
                 
             
-            <div class="block-right">
-                <h2>Time:  </h2>
-                <h2 id="time-left">10</h2>
+            <div class="block-time">
+                <h3>Time: </h3>
+                <h3 id="time-left"> 10</h3>
             </div>
         </div>
         
-        <div id="modal" class="modal"></div>
-        <button id="play-again" class="play-again"></button>
-        
+        <div class="warns">
+            <div id="modal" class="modal"></div>
+            <button id="play-again" class="play-again"></button>
+        </div>
         
         <div class="grid">
             <div class="square" id="1"></div>
