@@ -21,6 +21,7 @@ let countDownTimerId = null
 const randomSquare = () => {
     squares.forEach(square => {
         square.classList.remove("mole")
+        square.classList.remove("mole-hit")
     })
 
     let randomSquare = squares[Math.floor(Math.random() * 9)]
@@ -149,7 +150,10 @@ squares.forEach(square => {
         if (square.id == hitPosition) {
             result++
             score.textContent = result
+            square.classList.add("mole-hit")
             hitPosition = null
+            
+                                    
         }            
     })
 })

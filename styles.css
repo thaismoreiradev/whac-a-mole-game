@@ -5,11 +5,29 @@ body{
     text-align: center;
     align-items: center;
     justify-content: center;
+    /* cursor: url(./images/hammer.png), auto; */
+}
+
+.hammer:hover{
+    cursor: url(./images/hammer.png), auto;
+}
+
+.hammer:active{
+    cursor: url(./images/hammer-down.png), auto;
 }
 
 .game-container{
     width: 40rem;
     height: 100%;
+    
+    /* width: 100vw;
+        max-width: 500px;
+        min-width: 300px;
+        height: 100vh;
+        min-height: 538px;
+        max-height: 827px; */
+
+
     margin: auto;
     display: flex;    
     flex-direction: column;
@@ -17,6 +35,9 @@ body{
     position: relative;
     padding: 0.5rem;
 }
+
+
+
 
 header{
     display: flex;
@@ -115,6 +136,7 @@ header{
     color: white;
     font-size: 1.2rem;
     padding: 1rem 0;
+    cursor: pointer;
     
 }
 
@@ -134,11 +156,18 @@ header{
     height: 211px;
     background-color: blueviolet;
     border: solid white 1px;
+    background-image: url(./images/mole-hole.png);
+    
     
 }
 
 .mole{
     background-color:coral;
+    background-image: url(./images/mole-appear.png);
+}
+
+.mole-hit{
+    background-image: url(./images/mole-hit.png);
 }
 
 footer{
