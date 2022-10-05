@@ -5,6 +5,8 @@ const timeLeft = document.querySelector("#time-left")
 const score = document.querySelector("#score")
 let level = document.querySelector("#level")
 const modal = document.querySelector("#modal")
+const messageContainer = document.querySelector("#message-container")
+const message = document.querySelector("#message")
 const buttonPlayAgain = document.querySelector("#play-again")
 const levelTwoString = "Level 2"
 const levelThreeString = "Level 3"
@@ -68,16 +70,16 @@ const countDown = () => {
 
 
 const messageEnding = (background, string) => {
-    modal.style.display = "block"
-    modal.style.backgroundColor = background
-    modal.textContent = string
+    modal.style.display = "flex"
+    messageContainer.style.backgroundColor = background
+    message.textContent = string
 }
 
 
 const configuratingModal = (background, string) => {
-    modal.style.display = "block"
-    modal.style.backgroundColor = background
-    modal.textContent = string
+    modal.style.display = "flex"
+    messageContainer.style.backgroundColor = background
+    message.textContent = string
     setTimeout(() => {
         modal.style.display = "none"
     }, 5000);
