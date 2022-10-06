@@ -38,11 +38,6 @@ const moveMole = (time) => {
 
 
 
-
-
-
-
-
 const countDown = () => {
     currentTime--
     timeLeft.textContent = currentTime  
@@ -50,22 +45,20 @@ const countDown = () => {
     if(currentTime == 0) {
         clearInterval(countDownTimerId)
         clearInterval(timerId)
-        if(result >= 1 && level.textContent == "Level 1"){
+        if(result >= 10 && level.textContent == "Level 1"){
             startingLevelTwo()
         }
-        else if (result >= 2 && level.textContent == levelTwoString){
+        else if (result >= 15 && level.textContent == levelTwoString){
             startingLevelThree()
         }
-        else if(result >= 3 && level.textContent == levelThreeString){
+        else if(result >= 12 && level.textContent == levelThreeString){
             winningTheGame()
         }else {
-            messageEnding("red", "GAME OVER BITCH")
+            messageEnding("rgb(170, 9, 9)", "GAME OVER")
             restartingGame("TRY AGAIN")
-        }
-        
+        }        
     }
 }
-
 
 
 
@@ -82,7 +75,7 @@ const configuratingModal = (background, string) => {
     message.textContent = string
     setTimeout(() => {
         modal.style.display = "none"
-    }, 5000);
+    }, 2000);
 }
 
 const restartingGame = (string) => {
@@ -90,9 +83,6 @@ const restartingGame = (string) => {
     buttonPlayAgain.textContent = string
     buttonPlayAgain.addEventListener("click", () => location.reload())
 }
-
-
-
 
 
 
@@ -107,42 +97,36 @@ const changingLevel = () => {
 
 const startingLevelTwo = () => {
 
-
-    configuratingModal ("pink", "Starting level 2")
+    configuratingModal ("rgb(58, 58, 58)", "Starting level 2")
 
       setTimeout(() => {        
         level.textContent = levelTwoString
         changingLevel()        
         moveMole(600)
-    }, 5000)
-
-    
+    }, 2000)
 }
 
 
 
 const startingLevelThree = () => {
 
-    configuratingModal ("blue", "Starting level 3")
+    configuratingModal ("rgb(58, 58, 58)", "Starting level 3")
 
     setTimeout(() => {
         level.textContent = levelThreeString
-        moveMole(400)
+        moveMole(470)
         changingLevel()        
-    }, 5000)
+    }, 2000)
    
 }
 
 
 
-
 const winningTheGame = () => {
 
-        messageEnding("GREEN", "YOU WIN!")
+        messageEnding("rgb(53, 117, 53)", "YOU WIN!")
         restartingGame("PLAY AGAIN")  
 }
-
-
 
 
 
@@ -153,9 +137,7 @@ squares.forEach(square => {
             result++
             score.textContent = result
             square.classList.add("mole-hit")
-            hitPosition = null
-            
-                                    
+            hitPosition = null      
         }            
     })
 })
